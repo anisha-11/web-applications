@@ -7,6 +7,10 @@ class Application < Sinatra::Base
     return names.split(", ").sort.join(", ")
   end
 
+  get '/hello' do 
+    return erb(:index)
+  end 
+
   # This allows the app code to refresh 
   # without having to restart the server.
   configure :development do
