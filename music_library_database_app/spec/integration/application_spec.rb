@@ -10,7 +10,25 @@ describe Application do
   # class so our tests work.
   let(:app) { Application.new }
 
+  context "GET /albums/new" do 
+    it 'returns the form to add a new album' do 
+      response = get('/albums/new')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<form method="POST" action="/albums">')
+      expect(response.body).to include('<input type="text" name="title" />')
+      expect(response.body).to include('<input type="text" name="release_year" />')
+      expect(response.body).to include('<input type="text" name="artist_id" />')
+    end 
+  end 
+
   context "POST /albums" do
+    it 'should validate album parameters' do 
+      response = post('/albums', invalid_artist_title: 'Voyage', another_invalid_thing: 123)
+
+      expect(response.status).to eq(400)
+    end 
+
     it 'returns 200 OK' do
       response = post('/albums', title: "Voyage", release_year: 2022, artist_id: 2)
       
