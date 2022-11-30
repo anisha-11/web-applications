@@ -25,7 +25,7 @@ class Application < Sinatra::Base
       status 400
       return ''
     end
-    
+
     repo = AlbumRepository.new 
     new_albums = Album.new 
     new_albums.title = params[:title]
@@ -69,6 +69,10 @@ class Application < Sinatra::Base
     @artist = repo2.find(album.artist_id).name
     return erb(:albums)
   end
+
+  get '/artists/new' do 
+    return erb(:new_artist)
+  end 
 
   get '/artists/:id' do 
     @artist_id = params[:id]
