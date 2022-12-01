@@ -53,7 +53,7 @@ describe Application do
 
   context "GET /artists/new" do 
     it 'return html form page to get a new artist' do 
-      response = post('/artists/new')
+      response = get('/artists/new')
 
       expect(response.status).to eq(200)
       expect(response.body).to include('<form method="POST" action="/artists">')
