@@ -28,7 +28,7 @@ class Application < Sinatra::Base
   end
 
   # create new post
-  post '/posts' do
+  post '/albums' do
     # if_invalid_post?
     # status 400 
     # return ''
