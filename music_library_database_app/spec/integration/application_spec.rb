@@ -11,7 +11,7 @@ describe Application do
   let(:app) { Application.new }
 
   context "GET /albums/new" do 
-    xit 'returns the form to add a new album' do 
+    it 'returns the form to add a new album' do 
       response = get('/albums/new')
 
       expect(response.status).to eq(200)
@@ -23,7 +23,7 @@ describe Application do
   end 
 
   context "POST /albums" do
-    xit 'should validate album parameters' do 
+    it 'should validate album parameters' do 
       response = post('/albums', invalid_artist_title: 'Voyage', another_invalid_thing: 123)
 
       expect(response.status).to eq(400)
