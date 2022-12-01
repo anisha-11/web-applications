@@ -29,9 +29,18 @@ class Application < Sinatra::Base
 
   # create new post
   post '/posts' do
+    # if_invalid_post?
+    # status 400 
+    # return ''
+
     new_post = Post.new(params[:title], params[:content], params[:tags].split(','))
     @post_manager.add_post(new_post)
 
     return redirect('/')
   end
+
+  def if_invalid_post? 
+    variable = /^((https?|ftp|file):\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/
+    return (params[:title] == variable || params[:content == variable || params[:tags]] == variable)
+  end 
 end
